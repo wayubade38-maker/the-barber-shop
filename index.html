@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>THE BARBER SHOP (YEOVIL) LIMITED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* === Общие стили === */
+    :root {
+      --black: #111;
+      --dark-gray: #222;
+      --gold: #d4af37;
+      --light: #f5f5f5;
+      --text: #eee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--gold);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--dark-gray);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 80vh;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/11.jpg') no-repeat center center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--light);
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c19b2a;
+    }
+
+    /* Features */
+    .features {
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--gold);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: var(--dark-gray);
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    /* Отзывы */
+    .testimonials {
+      padding: 5rem 0;
+      background-color: var(--dark-gray);
+    }
+
+    .testimonials h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--gold);
+    }
+
+    .testimonial-slider {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial .author {
+      font-weight: 600;
+      color: var(--gold);
+    }
+.testimonial img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.4rem;
+  border: 2px solid var(--gold);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .slider-nav button {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .slider-nav button:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* Портфолио */
+    .portfolio {
+      padding: 5rem 0;
+      text-align: center;
+    }
+
+    .portfolio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--gold);
+    }
+
+    .portfolio-carousel {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .portfolio-carousel::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .portfolio-carousel::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 4px;
+    }
+
+    .portfolio-item {
+      flex: 0 0 auto;
+      width: 250px;
+      height: 300px;
+      background: var(--dark-gray);
+      border-radius: 8px;
+      overflow: hidden;
+      scroll-snap-align: start;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark-gray);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: var(--text);
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .portfolio-item {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">THE BARBER SHOP</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Precision. Style. Tradition.</h1>
+      <p>Yeovil’s premier barber shop offering classic cuts, modern grooming, and premium haircare products for men who demand excellence.</p>
+      <a href="booking.html" class="btn">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <h2>What We Offer</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Expert Barbers</h3>
+          <p>Our team blends traditional techniques with modern trends to deliver flawless results every time.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Grooming Products</h3>
+          <p>Shop our curated selection of beard oils, pomades, shampoos, and more — all tested by our barbers.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Barber Equipment</h3>
+          <p>Professional-grade clippers, razors, and accessories for barbers and enthusiasts alike.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Отзывы -->
+<section class="testimonials">
+  <div class="container">
+    <h2>Client Testimonials</h2>
+    <div class="testimonial-slider">
+      <div class="testimonial-track" id="testimonialTrack">
+        <div class="testimonial">
+          <img src="images/1.jpg" alt="James T." class="testimonial-avatar">
+          <p>“Best haircut I’ve ever had in Somerset. The attention to detail is unmatched.”</p>
+          <div class="author">— James T.</div>
+        </div>
+        <div class="testimonial">
+          <img src="images/2.jpg" alt="Marcus L." class="testimonial-avatar">
+          <p>“My beard has never looked better. The oil they recommended changed everything!”</p>
+          <div class="author">— Marcus L.</div>
+        </div>
+        <div class="testimonial">
+          <img src="images/3.jpg" alt="Daniel R." class="testimonial-avatar">
+          <p>“Friendly, professional, and always on time. A true gentleman’s experience.”</p>
+          <div class="author">— Daniel R.</div>
+        </div>
+        <div class="testimonial">
+          <img src="images/4.jpg" alt="Robert K." class="testimonial-avatar">
+          <p>“I drive 40 minutes just for my monthly cut. Worth every mile.”</p>
+          <div class="author">— Robert K.</div>
+        </div>
+        <div class="testimonial">
+          <img src="images/5.jpg" alt="Liam S." class="testimonial-avatar">
+          <p>“The shop smells amazing, the music is great, and the cut? Perfect.”</p>
+          <div class="author">— Liam S.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-nav">
+      <button onclick="prevTestimonial()">❮</button>
+      <button onclick="nextTestimonial()">❯</button>
+    </div>
+  </div>
+</section>
+
+  <!-- Портфолио -->
+  <section class="portfolio">
+    <div class="container">
+      <h2>Our Work</h2>
+      <div class="portfolio-carousel">
+        <div class="portfolio-item"><img src="images/6.jpg" alt="Classic Cut"></div>
+        <div class="portfolio-item"><img src="images/7.jpg" alt="Beard Trim"></div>
+        <div class="portfolio-item"><img src="images/8.jpg" alt="Fade"></div>
+        <div class="portfolio-item"><img src="images/9.jpg" alt="Undercut"></div>
+        <div class="portfolio-item"><img src="images/10.jpg" alt="Textured Crop"></div>
+        <div class="portfolio-item"><img src="images/111.jpg" alt="Full Grooming"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>THE BARBER SHOP</h3>
+          <p>Unit 7, Yeovil Business Park<br>Yeovil, Somerset BA20 2EW<br>United Kingdom</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="shop.html">Shop</a></li>
+          </ul>
+        </div>
+<div class="footer-section">
+  <h3>Legal</h3>
+  <ul>
+    <li><a href="terms.html">Terms of Service</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="returns.html">Returns & Refunds</a></li>
+  </ul>
+</div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 +44 1935 123456<br>✉️ info@thebarbershopyeovil.co.uk</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 THE BARBER SHOP (YEOVIL) LIMITED. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript для отзывов -->
+  <script>
+    let currentIndex = 0;
+    const track = document.getElementById('testimonialTrack');
+    const total = 5;
+
+    function updateTestimonial() {
+      const offset = -currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+    }
+
+    function nextTestimonial() {
+      currentIndex = (currentIndex + 1) % total;
+      updateTestimonial();
+    }
+
+    function prevTestimonial() {
+      currentIndex = (currentIndex - 1 + total) % total;
+      updateTestimonial();
+    }
+
+    // Автопрокрутка каждые 6 секунд
+    setInterval(nextTestimonial, 6000);
+  </script>
+
+</body>
+</html>

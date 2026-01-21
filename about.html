@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us — THE BARBER SHOP (YEOVIL) LIMITED</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111;
+      --dark-gray: #222;
+      --gold: #d4af37;
+      --light: #f5f5f5;
+      --text: #eee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--gold);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--dark-gray);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Main Content */
+    main {
+      padding: 5rem 0;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 3rem;
+      color: var(--gold);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+
+    .about-text p {
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Team Section */
+    .team-section {
+      margin-bottom: 5rem;
+    }
+
+    .team-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--gold);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .team-member {
+      background: var(--dark-gray);
+      padding: 1.8rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .team-member img {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.2rem;
+      border: 2px solid var(--gold);
+    }
+
+    .team-member h3 {
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .team-member p {
+      font-size: 0.95rem;
+      color: #ccc;
+    }
+
+    /* Facility Section */
+    .facility-section {
+      background: var(--dark-gray);
+      padding: 4rem 0;
+      margin-bottom: 5rem;
+    }
+
+    .facility-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .facility-content img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+
+    /* Footer — identical to home page */
+    footer {
+      background-color: var(--dark-gray);
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: var(--text);
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .about-content,
+      .facility-content {
+        grid-template-columns: 1fr;
+      }
+      .page-title {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">THE BARBER SHOP</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <h1 class="page-title">About Our Shop</h1>
+
+    <section class="about-content">
+      <div class="about-text">
+        <p>Founded in Yeovil, <strong>THE BARBER SHOP (YEOVIL) LIMITED</strong> was born from a passion for precision, tradition, and modern grooming.</p>
+        <p>We believe every man deserves a cut that reflects his personality — whether it’s a classic taper, a sharp fade, or a full beard sculpting.</p>
+        <p>Our barbers are trained in both heritage techniques and contemporary styles, ensuring you leave not just well-groomed, but confident.</p>
+      </div>
+      <div class="about-image">
+        <img src="images/1768891925.jpg" alt="Our Barber Shop Interior">
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team-section">
+      <h2>Meet Our Barbers</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="images/13.jpg" alt="Barber 1">
+          <h3>James Carter</h3>
+          <p>Master Barber | 10+ years experience</p>
+        </div>
+        <div class="team-member">
+          <img src="images/14.jpg" alt="Barber 2">
+          <h3>Marcus Lee</h3>
+          <p>Beard Specialist | Fade Expert</p>
+        </div>
+        <div class="team-member">
+          <img src="images/15.jpg" alt="Barber 3">
+          <h3>Daniel Rowe</h3>
+          <p>Grooming Consultant | Product Advisor</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Facility -->
+    <section class="facility-section">
+      <div class="container">
+        <div class="facility-content">
+          <div>
+            <h2>Our Facility</h2>
+            <p>Where Freshness Meets Precision.</p>
+            <p>Our Yeovil studio is equipped with the latest professional tools and sterilisation systems. Every station is designed for comfort, hygiene, and attention to detail.</p>
+            <p>We continuously invest in new technology — including state-of-the-art packaging equipment for our retail products — and we’re soon launching a line of quick-frozen grooming essentials.</p>
+          </div>
+          <div>
+            <img src="images/12.jpg" alt="Modern Barber Studio">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (identical to home) -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>THE BARBER SHOP</h3>
+          <p>Unit 7, Yeovil Business Park<br>Yeovil, Somerset BA20 2EW<br>United Kingdom</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="shop.html">Shop</a></li>
+          </ul>
+        </div>
+<div class="footer-section">
+  <h3>Legal</h3>
+  <ul>
+    <li><a href="terms.html">Terms of Service</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="returns.html">Returns & Refunds</a></li>
+  </ul>
+</div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 +44 1935 123456<br>✉️ info@thebarbershopyeovil.co.uk</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 THE BARBER SHOP (YEOVIL) LIMITED. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

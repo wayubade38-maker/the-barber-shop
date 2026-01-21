@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grooming Accessories — THE BARBER SHOP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111;
+      --dark-gray: #222;
+      --gold: #d4af37;
+      --light: #f5f5f5;
+      --text: #eee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--gold);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: var(--dark-gray);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Cart icon */
+    .cart-icon {
+      position: relative;
+      margin-left: 1rem;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 5rem 0;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    .page-title {
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .products-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .product-item {
+      background: var(--dark-gray);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .product-item h3 {
+      font-size: 1.8rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .product-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .product-image {
+      width: 100%;
+      height: 440px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-description {
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    .btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      background-color: #c19b2a;
+    }
+
+    footer {
+      background-color: var(--dark-gray);
+      padding: 2rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: var(--text);
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { flex-direction: column; gap: 1rem; }
+      .page-title { font-size: 2rem; }
+      .product-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .product-image { height: 200px; }
+      .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">THE BARBER SHOP</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="shop.html">Shop</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+          <!-- Корзина -->
+          <a href="cart.html" class="cart-icon">
+            🛒
+            <span id="cart-count" class="cart-count">0</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <a href="shop.html" class="back-link">← Back to Shop</a>
+    <h1 class="page-title">Grooming Accessories</h1>
+
+    <div class="products-list">
+      <!-- 1 -->
+      <div class="product-item">
+        <h3>Ultimate Badger Hair Shaving Brush</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/27.jpg" alt="Badger Hair Shaving Brush"></div>
+          <div class="product-description">
+            <p>A premium shaving brush made with soft, ethically sourced silvertip badger bristles. It creates a rich, creamy lather and gently exfoliates the skin, preparing the beard for the closest possible shave.</p>
+          </div>
+        </div>
+        <div class="product-price">£55.99</div>
+        <button onclick="addToCart('price_1Ss4PTL1hBRmFUSJomcAcQSO', 'Ultimate Badger Hair Shaving Brush', 'images/27.jpg', 55.99)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 2 -->
+      <div class="product-item">
+        <h3>Precision Straight Razor (Cut-throat)</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/28.jpg" alt="Straight Razor"></div>
+          <div class="product-description">
+            <p>A professional-grade weighted straight Razor featuring a stainless steel blade holder and a handcrafted walnut wood handle. Ideal for those who appreciate the art of a traditional wet shave at home.</p>
+          </div>
+        </div>
+        <div class="product-price">£44.50</div>
+        <button onclick="addToCart('price_1Ss4QsL1hBRmFUSJBeOM4J3c', 'Precision Straight Razor (Cut-throat)', 'images/28.jpg', 44.50)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 3 -->
+      <div class="product-item">
+        <h3>Traditional Canvas & Leather Barber Cape</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/29.jpg" alt="Barber Cape"></div>
+          <div class="product-description">
+            <p>A heavy-duty, water-repellent professional cape featuring genuine leather trim and an adjustable brass neck-hook. Provides maximum comfort for the client and a premium vintage look for the shop.</p>
+          </div>
+        </div>
+        <div class="product-price">£35.99</div>
+        <button onclick="addToCart('price_1Ss4SEL1hBRmFUSJxEL643S8', 'Traditional Canvas & Leather Barber Cape', 'images/29.jpg', 35.99)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 4 -->
+      <div class="product-item">
+        <h3>Matte Black Talc Puffer</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/30.jpg" alt="Talc Puffer"></div>
+          <div class="product-description">
+            <p>A classic rubber and stainless steel atomizer designed for precise application of talcum powder. Delivers a fine mist to soothe the skin and clean the neck after a fade.</p>
+          </div>
+        </div>
+        <div class="product-price">£18.50</div>
+        <button onclick="addToCart('price_1Ss4TeL1hBRmFUSJGfFNdA7S', 'Matte Black Talc Puffer', 'images/30.jpg', 18.50)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 5 -->
+      <div class="product-item">
+        <h3>Sandalwood Beard Comb (Pocket Size)</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/31.jpg" alt="Sandalwood Beard Comb"></div>
+          <div class="product-description">
+            <p>Hand-carved from solid green sandalwood, this anti-static comb features rounded teeth to prevent hair breakage. Naturally scented and small enough to fit in a waistcoat pocket.</p>
+          </div>
+        </div>
+        <div class="product-price">£5.99</div>
+        <button onclick="addToCart('price_1Ss4VnL1hBRmFUSJ9GYPkr0L', 'Sandalwood Beard Comb (Pocket Size)', 'images/31.jpg', 5.99)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 6 -->
+      <div class="product-item">
+        <h3>Professional Neck Duster (Soft Goat Hair)</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/32.jpg" alt="Neck Duster"></div>
+          <div class="product-description">
+            <p>A soft goat hair duster designed for gentle removal of hair clippings from the neck and shoulders. A must-have finishing touch for any professional barber.</p>
+          </div>
+        </div>
+        <div class="product-price">£167.99</div>
+        <button onclick="addToCart('price_1Ss4XUL1hBRmFUSJMPNd4uhP', 'Professional Neck Duster (Soft Goat Hair)', 'images/32.jpg', 167.99)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 7 -->
+      <div class="product-item">
+        <h3>Stealth Digital Hair Dryer (Ionic Technology)</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/33.jpg" alt="Hair Dryer"></div>
+          <div class="product-description">
+            <p>A whisper-quiet, ultra-lightweight professional dryer designed specifically for barbering. Using advanced ionic technology, it dries hair from the inside out, reducing frizz and sealing the cuticle for a high-shine finish that lasts.</p>
+          </div>
+        </div>
+        <div class="product-price">£155.99</div>
+        <button onclick="addToCart('price_1Ss4ZSL1hBRmFUSJ0FlLVIyh', 'Stealth Digital Hair Dryer (Ionic Technology)', 'images/33.jpg', 155.99)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 8 -->
+      <div class="product-item">
+        <h3>Ultimate Twin-Foil Finishing Shaver</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/34.jpg" alt="Finishing Shaver"></div>
+          <div class="product-description">
+            <p>The final step for an immaculate skin fade. This heavy-duty shaver uses independent hovering triple-foil heads with hypoallergenic gold-titanium foils. It provides a zero-gap finish without the irritation of a traditional Razor.</p>
+          </div>
+        </div>
+        <div class="product-price">£184.89</div>
+        <button onclick="addToCart('price_1Ss4bJL1hBRmFUSJO6XPmxTU', 'Ultimate Twin-Foil Finishing Shaver', 'images/34.jpg', 184.89)" class="btn">Add to Cart</button>
+      </div>
+
+      <!-- 9 -->
+      <div class="product-item">
+        <h3>Professional UV Tool Sterilizer Cabinet</h3>
+        <div class="product-content">
+          <div class="product-image"><img src="images/35.jpg" alt="UV Sterilizer"></div>
+          <div class="product-description">
+            <p>Hygiene is the ultimate luxury. This medical-grade UV-C sterilizer ensures all clippers, combs, and scissors are 99.9% free of bacteria and viruses between clients. A must-have for a high-end shop maintaining the highest safety standards.</p>
+          </div>
+        </div>
+        <div class="product-price">£204.99</div>
+        <button onclick="addToCart('price_FFFFFFFFFFFFFF', 'Professional UV Tool Sterilizer Cabinet', 'images/35.jpg', 204.99)" class="btn">Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>THE BARBER SHOP</h3>
+          <p>Unit 7, Yeovil Business Park<br>Yeovil, Somerset BA20 2EW<br>United Kingdom</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="shop.html">Shop</a></li>
+          </ul>
+        </div>
+<div class="footer-section">
+  <h3>Legal</h3>
+  <ul>
+    <li><a href="terms.html">Terms of Service</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+    <li><a href="returns.html">Returns & Refunds</a></li>
+  </ul>
+</div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 +44 1935 123456<br>✉️ info@thebarbershopyeovil.co.uk</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 THE BARBER SHOP (YEOVIL) LIMITED. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Корзина -->
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(priceId, name, image, price) {
+      const existing = cart.find(item => item.priceId === priceId);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ priceId, name, quantity: 1, image, price });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      alert(`${name} added to cart!`);
+    }
+
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    updateCartCount();
+  </script>
+
+</body>
+</html>

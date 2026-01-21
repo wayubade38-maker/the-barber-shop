@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart — THE BARBER SHOP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #111;
+      --dark-gray: #222;
+      --gold: #d4af37;
+      --light: #f5f5f5;
+      --text: #eee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: var(--black);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--gold);
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      background-color: var(--dark-gray);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .cart-icon {
+      position: relative;
+      margin-left: 1rem;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    main {
+      padding: 5rem 0;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .empty-cart {
+      text-align: center;
+      color: #aaa;
+      margin: 2rem 0;
+    }
+
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      background: var(--dark-gray);
+      padding: 1.2rem;
+      border-radius: 8px;
+      align-items: start;
+    }
+
+    .item-info h4 {
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+
+    .item-price {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .quantity-btn {
+      width: 28px;
+      height: 28px;
+      background: #333;
+      color: white;
+      border: 1px solid #555;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .quantity-input {
+      width: 40px;
+      text-align: center;
+      background: #222;
+      color: white;
+      border: 1px solid #555;
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .remove-btn {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-left: 0.5rem;
+    }
+
+    .checkout-section {
+      max-width: 700px;
+      margin: 2rem auto 0;
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: right;
+    }
+
+    .total-label {
+      display: inline-block;
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-right: 1rem;
+    }
+
+    .total-value {
+      font-size: 1.4rem;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      background-color: var(--gold);
+      color: var(--black);
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.3s;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #c19b2a;
+    }
+
+    footer {
+      background-color: var(--dark-gray);
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li a {
+      color: var(--text);
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--gold);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #444;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .cart-item {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .controls {
+        justify-content: center;
+        margin-top: 0.5rem;
+      }
+      .checkout-section {
+        text-align: center;
+      }
+      .total-label {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">THE BARBER SHOP</div>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="shop.html">Shop</a>
+          <a href="cart.html" class="cart-icon">
+            🛒
+            <span id="cart-count">0</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Your Cart</h1>
+    <div id="cart-content">
+      <!-- Сюда подгрузится корзина -->
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>THE BARBER SHOP</h3>
+          <p>Unit 7, Yeovil Business Park<br>Yeovil, Somerset BA20 2EW<br>United Kingdom</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="shop.html">Shop</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>📞 +44 1935 123456<br>✉️ info@thebarbershopyeovil.co.uk</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2026 THE BARBER SHOP (YEOVIL) LIMITED. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Безопасное чтение корзины
+    let cart = [];
+    try {
+      const saved = localStorage.getItem('cart');
+      if (saved) cart = JSON.parse(saved);
+    } catch (e) {
+      console.warn('Failed to parse cart from localStorage', e);
+      cart = [];
+    }
+
+    function saveCart() {
+      try {
+        localStorage.setItem('cart', JSON.stringify(cart));
+      } catch (e) {
+        console.error('Failed to save cart', e);
+      }
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      const countEl = document.getElementById('cart-count');
+      if (countEl) countEl.textContent = totalCount;
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      saveCart();
+      renderCart();
+    }
+
+    function updateQuantity(index, newQuantity) {
+      const qty = parseInt(newQuantity);
+      if (qty < 1) {
+        removeFromCart(index);
+        return;
+      }
+      cart[index].quantity = qty;
+      saveCart();
+      renderCart();
+    }
+
+    function getTotal() {
+      return cart.reduce((sum, item) => {
+        const price = parseFloat(item.price) || 0;
+        const qty = item.quantity || 0;
+        return sum + price * qty;
+      }, 0);
+    }
+
+    function renderCart() {
+      const cartContent = document.getElementById('cart-content');
+
+      if (cart.length === 0) {
+        cartContent.innerHTML = `
+          <p class="empty-cart">Your cart is empty.</p>
+          <div style="text-align: center; margin-top: 1rem;">
+            <a href="shop.html" class="btn">Continue Shopping</a>
+          </div>
+        `;
+        return;
+      }
+
+      let html = '<div class="cart-items">';
+      cart.forEach((item, index) => {
+        const price = parseFloat(item.price) || 0;
+        html += `
+          <div class="cart-item">
+            <div class="item-info">
+              <h4>${item.name}</h4>
+              <div class="item-price">£${price.toFixed(2)} each</div>
+            </div>
+            <div class="controls">
+              <div class="quantity-controls">
+                <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity - 1})">–</button>
+                <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)">
+                <button class="quantity-btn" onclick="updateQuantity(${index}, ${item.quantity + 1})">+</button>
+              </div>
+              <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+      html += '</div>';
+
+      const total = getTotal();
+      html += `
+        <div class="checkout-section">
+          <div>
+            <span class="total-label">Total:</span>
+            <span class="total-value">£${total.toFixed(2)}</span>
+          </div>
+          <button id="checkout-btn" class="btn">Proceed to Payment</button>
+        </div>
+      `;
+
+      cartContent.innerHTML = html;
+
+      document.getElementById('checkout-btn').addEventListener('click', async () => {
+        try {
+          const response = await fetch('/.netlify/functions/create_checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cart })
+          });
+
+          const result = await response.json();
+
+          if (result.error) {
+            throw new Error(result.error);
+          }
+
+          window.location.href = result.url;
+        } catch (error) {
+          alert('Error: ' + error.message);
+          console.error(error);
+        }
+      });
+    }
+
+    // Глобальные функции для onclick
+    window.updateQuantity = updateQuantity;
+    window.removeFromCart = removeFromCart;
+
+    // Загрузка при старте
+    renderCart();
+  </script>
+
+</body>
+</html>
